@@ -1,0 +1,37 @@
+version: "3"
+services:
+  fcrepo:
+    image: jrgriffiniii/fcrepo-graphdb:4.7.5
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "8080:8080"
+  graphdb:
+    image: jrgriffiniii/graphdb:8.11.0
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 50M
+    ports:
+      - "7200:7200"
+  solr:
+    image: solr:7.2-alpine
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "8983:8983"
+    volumes:
+      - "./solr_config:/solr_config"
+    entrypoint:
+      - docker-entrypoint.sh
+      - solr-precreate
+      - hydra-development
+      - "/solr_config/config"
