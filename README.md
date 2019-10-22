@@ -1,5 +1,5 @@
-# GeoLinked Data Services for Samvera
-Environment for Fedora Commons, GraphDB, and Solr using Docker
+# Samvera Repository Services for Linked Geo. Metadata
+Environment for Fedora Commons, Apache Solr, and GraphDB using Docker
 
 ## Docker Compose
 
@@ -22,12 +22,12 @@ docker swarm init
 
 ### Deploy the stack
 ```
-docker stack deploy -c docker-compose.yml geolinkeddata
+docker stack deploy -c docker-compose.yml linkedgeometadata
 ```
 
 ### View the services
 ```
-docker stack services geolinkeddata
+docker stack services linkedgeometadata
 ```
 
 *How do I find the IP addresses for the node on my Swarm?*
@@ -47,7 +47,7 @@ Hyrax or Valkyrie, for example).*
 
 ## Taking down the stack
 ```
-docker stack rm geolinkeddata
+docker stack rm linkedgeometadata
 ```
 
 ## Taking down the Swarm
